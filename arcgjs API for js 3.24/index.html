@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="lYWuD8ifei">
+    
+    
+    
+    
+    <title>
+        Arcgjs API for Js 3.24  |
+        
+        WestLonely</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="arcgis for js 版本: v3.24. 项目框架是用vue,这部分不需要在赘述了,重点梳理一下arcgis for js API方面的知识点,由于使用了vue,因此,所有的arcgis实例都保存在了vue组件里面,这样,就可以通过this在不同的作用域中访问,很方便.所以,在加载完之后,通过this.mapObj = obj保存的.是的,所有的模块是一次性加载的.当然了,还有一种优化的">
+<meta name="keywords" content="前端,JavaScript,vue,前端开发,arcgis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arcgjs API for Js 3.24 ">
+<meta property="og:url" content="https://biubu.cn/arcgjs API for js 3.24/index.html">
+<meta property="og:site_name" content="WestLonely">
+<meta property="og:description" content="arcgis for js 版本: v3.24. 项目框架是用vue,这部分不需要在赘述了,重点梳理一下arcgis for js API方面的知识点,由于使用了vue,因此,所有的arcgis实例都保存在了vue组件里面,这样,就可以通过this在不同的作用域中访问,很方便.所以,在加载完之后,通过this.mapObj = obj保存的.是的,所有的模块是一次性加载的.当然了,还有一种优化的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-01T13:24:28.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Arcgjs API for Js 3.24 ">
+<meta name="twitter:description" content="arcgis for js 版本: v3.24. 项目框架是用vue,这部分不需要在赘述了,重点梳理一下arcgis for js API方面的知识点,由于使用了vue,因此,所有的arcgis实例都保存在了vue组件里面,这样,就可以通过this在不同的作用域中访问,很方便.所以,在加载完之后,通过this.mapObj = obj保存的.是的,所有的模块是一次性加载的.当然了,还有一种优化的">
+    
+    
+        <link rel="icon" href="/img/favicon.png">
+    
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--    <link href="https://cdn.bootcss.com/font-awesome/5.8.2/css/all.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css">
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+        <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+    
+    <!-- 加载特效 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <link href="https://cdn.bootcss.com/pace/0.5.1/themes/pace-theme-flash.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/valine.css">
+    <script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if(curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+    };
+    </script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="http://cdn.biubu.cn/avatar1.gif" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">WestLonely</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">前端二狗子的博客</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/categories/前端/IDE/">IDE</a></li>
+                        
+                            <li><a href="/categories/前端/JavaScript/">JavaScript</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/about/">关于作者</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/biubu" title="github">github</a>
+                            
+                                <a class="fl gitee" target="_blank" href="https://gitee.com/biubu" title="gitee">gitee</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2018总结/" style="font-size: 10px;">2018总结</a> <a href="/tags/2019/" style="font-size: 10px;">2019</a> <a href="/tags/2020/" style="font-size: 10px;">2020</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/IDE/" style="font-size: 11.67px;">IDE</a> <a href="/tags/JavaScript/" style="font-size: 18.33px;">JavaScript</a> <a href="/tags/JavaScript-jquery/" style="font-size: 10px;">JavaScript - jquery</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/arcgis/" style="font-size: 15px;">arcgis</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/前端开发/" style="font-size: 15px;">前端开发</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/杂文/" style="font-size: 11.67px;">杂文</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">一个前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">WestLonely</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="http://cdn.biubu.cn/avatar1.gif" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">WestLonely</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">前端二狗子的博客</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/categories/前端/IDE/">IDE</a></li>
+                
+                    <li><a href="/categories/前端/JavaScript/">JavaScript</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/about/">关于作者</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/biubu" title="github">github</a>
+                    
+                        <a class="gitee" target="_blank" href="https://gitee.com/biubu" title="gitee">gitee</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-arcgjs API for js 3.24" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/arcgjs API for js 3.24/" class="article-date">
+      <time datetime="2018-07-03T16:00:00.000Z" itemprop="datePublished">2018-07-04</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Arcgjs API for Js 3.24 
+    </h1>
+  
+
+
+            </header>
+            
+                <div class="article-info article-info-post">
+                    
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a><a class="article-category-link" href="/categories/前端/JavaScript/前端开发/">前端开发</a><a class="article-category-link" href="/categories/前端/JavaScript/前端开发/arcgis/">arcgis</a><a class="article-category-link" href="/categories/前端/JavaScript/前端开发/arcgis/vue/">vue</a>
+    </div>
+
+
+                    
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arcgis/">arcgis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
+    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                <ul>
+<li>arcgis for js 版本: v3.24.</li>
+<li><p>项目框架是用vue,这部分不需要在赘述了,重点梳理一下<code>arcgis for js API</code>方面的知识点,由于使用了vue,因此,所有的arcgis实例都保存在了vue组件里面,这样,就可以通过this在不同的作用域中访问,很方便.所以,在加载完之后,通过<code>this.mapObj = obj</code>保存的.是的,所有的模块是一次性加载的.当然了,还有一种优化的思路是:每次在需要该模块的时候再加载.</p>
+<a id="more"></a>
+<h3 id="1-核心概念"><a href="#1-核心概念" class="headerlink" title="1. 核心概念 :"></a>1. 核心概念 :</h3><blockquote>
+<p>点，线，面，体 统称为要素</p>
+<p>使用步骤:</p>
+<ol>
+<li>创建要素实例;</li>
+<li>创建图形 (Graphic) 的实例;<br> <code>new Graphic(geometry?, symbol?, attributes?, infoTemplate?)</code>其中,要正常显示<code>geometry, symbol</code>两个参数是必须的.</li>
+<li>将图形添加到图层 (GraphicsLayer) 上;</li>
+<li>将图层添加到Map的实例上.全局只有一个Map的实例,没有尝试过多个的.</li>
+</ol>
+<p>以上四步缺了任何一步,都不会在地图上显示你创建的要素.</p>
+</blockquote>
+<ul>
+<li><p>1 geometry (几何体) :</p>
+<ul>
+<li><p>1 点(Point):</p>
+<ul>
+<li>1 描述 :<blockquote>
+<p>A location defined by an X- and Y- coordinate. It can be map units or screen units.</p>
+<p>意思是:一个由X和Y坐标定义的位置。它可以是地图单位或屏幕单元。是的，可以使相对于浏览器窗口的位置，在本项目中，全部使用的是GPS坐标.点的概念贯穿于整个arcgis,绘制线段需要点,绘制圆需要点作为圆心,绘制多边形需要点作为交点….</p>
+</blockquote>
+</li>
+<li><p>2 用法:<br><br>arcgis 每次都需要用 new 关键字创建对象的实例,不论是点、线还是面，都是一样的。我们只需要在创建的实例上进行逻辑处理即可，看代码：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> point = <span class="keyword">new</span> <span class="keyword">this</span>.mapObj.Point(<span class="string">'long'</span>,<span class="string">'lat'</span>)<span class="comment">// 传入坐标参数</span></span><br></pre></td></tr></table></figure>
+<p>  这只是一种方式创建了一个点,官方还提供了好几种的方式,这里就不再赘述了.详情参考官方API.</p>
+</li>
+<li>3 官方API: <a href="https://developers.arcgis.com/javascript/3/jsapi/point-amd.html" target="_blank" rel="noopener">这里</a></li>
+</ul>
+</li>
+<li><p>2 多线段(Polyline):</p>
+<ul>
+<li>1 描述:<blockquote>
+<p>An array of paths where each path is an array of points.</p>
+<p>一组路径，其中每条路径都是一个点的数组。类似这样:[ [ [x, y],[x1, y1], [x2, y2], [x3,y3] ] ],我们来拆分理解这个数组:</p>
+<ol>
+<li><p>最内层的像 [x, y] 的这种是一个点的坐标,</p>
+</li>
+<li><p>在外层 : [ [x, y],[x1, y1], [x2, y2], [x3,y3] ,这种的是一条线段的坐标.</p>
+</li>
+<li><p>最外层: 这种应该是(项目中没这么用过,只是这样理解的)多条线段.</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>2 用法:</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> line = <span class="keyword">new</span> <span class="keyword">this</span>.mapObj.Polyline (&#123;</span><br><span class="line">            <span class="string">'paths'</span>: [linePath],<span class="comment">// 数组格式: [[[x,y],[x1,y1]....]]</span></span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>  同样的,官方还有两种构造函数可调用 ,这只是其中一种.</p>
+</li>
+<li>3 官方API: <a href="https://developers.arcgis.com/javascript/3/jsapi/polyline-amd.html" target="_blank" rel="noopener">这里</a></li>
+</ul>
+</li>
+<li><p>3 多边形:</p>
+<ul>
+<li>1 描述:<blockquote>
+<p>An array of rings where each ring is an array of points. The first and last points of a ring must be the same.</p>
+<p>一个首尾相接的数组，每个数组都是一个点的数组。数组的第一个和最后一点必须是相同的。</p>
+<p>意译的,感觉有点绕,点的数组就是[ ‘long’, ‘lat’ ];</p>
+</blockquote>
+</li>
+<li><p>2 用法 :</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//多边形最少有三个边，首尾的相等才能闭合，因此，最少是四个点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> polygon = <span class="keyword">new</span> <span class="keyword">this</span>.mapObj.Polygon([</span><br><span class="line">       [<span class="number">50</span>, <span class="number">0</span>], [<span class="number">150</span>, <span class="number">20</span>], [<span class="number">150</span>, <span class="number">-20</span>], [<span class="number">50</span>,<span class="number">0</span>]</span><br><span class="line">   ])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 官方API : <a href="https://developers.arcgis.com/javascript/3/jsapi/polygon-amd.html#polygon3" target="_blank" rel="noopener">这里</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2 symbol:</p>
+<ul>
+<li><p>1 lineSymbol :</p>
+<ul>
+<li><p>１ 描述 :</p>
+<blockquote>
+<p>Line symbols are used to draw linear features on the graphics layer.<br>线条符号用于在图形层上绘制线性特性<br>LineSymbol has no constructor. Use SimpleLineSymbol or CartographicLineSymbol.<br>LineSymbol 没有构造函数,请使用SimpleLineSymbol 或 CartographicLineSymbol.</p>
+</blockquote>
+</li>
+<li><p>2 官方API: <a href="https://developers.arcgis.com/javascript/3/jsapi/linesymbol-amd.html" target="_blank" rel="noopener">这里</a></p>
+</li>
+</ul>
+</li>
+<li><p>2 SimpleLineSymbol :</p>
+<ul>
+<li>1 描述 :<blockquote>
+<p>Line symbols are used to draw linear features on the graphics layer. SimpleLineSymbol is either a solid line or a predefined pattern of dashes and dots.<br>用于在图形层上绘制线性特性。SimpleLineSymbol要么是一条实线，要么是一种预定义的破折号和点号。</p>
+</blockquote>
+</li>
+<li><p>2 用法 :</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sls = <span class="keyword">new</span> SimpleLineSymbol(</span><br><span class="line">             SimpleLineSymbol.STYLE_DASH, <span class="comment">// style</span></span><br><span class="line">             <span class="keyword">new</span> Color([<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>]), <span class="comment">// color</span></span><br><span class="line">             <span class="number">3</span> <span class="comment">// width</span></span><br><span class="line">           );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 官方API地址: <a href="https://developers.arcgis.com/javascript/3/jsapi/simplelinesymbol-amd.html" target="_blank" rel="noopener">这里</a>;</p>
+</li>
+</ul>
+</li>
+<li><p>3 cartographicLineSymbol :</p>
+<ul>
+<li>1 描述 :<blockquote>
+<p>类似 SimpleLineSymbol</p>
+</blockquote>
+</li>
+<li><p>2 用法:</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  cls = <span class="keyword">new</span> <span class="keyword">this</span>.mapObj.CartographicLineSymbol(</span><br><span class="line">	<span class="keyword">this</span>.mapObj.CartographicLineSymbol.STYLE_SOLID, <span class="comment">// style</span></span><br><span class="line">	<span class="keyword">new</span> Color([<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>]),<span class="comment">// color</span></span><br><span class="line">	<span class="number">10</span>, <span class="comment">// width</span></span><br><span class="line">	CartographicLineSymbol.CAP_ROUND, <span class="comment">// cap,</span></span><br><span class="line">	CartographicLineSymbol.JOIN_MITER,<span class="comment">// join</span></span><br><span class="line">	<span class="number">5</span> <span class="comment">// miterLimit</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 官方API地址: <a href="https://developers.arcgis.com/javascript/3/jsapi/cartographiclinesymbol-amd.html" target="_blank" rel="noopener">这里</a>;</p>
+</li>
+</ul>
+</li>
+<li><p>4  SimpleFillSymbol</p>
+<ul>
+<li>1 描述:<blockquote>
+<p>Fill symbols are used to draw polygon features on the graphics layer. SimpleFillSymbol can be solid, transparent, or one of several cross hatch patterns. In addition, the symbol can have an optional outline, which is defined by a line symbol.</p>
+<p>填充符号用于在图形层上绘制多边形特征。简单的符号可以是实心的，透明的，或者是几个交叉的。此外，这个符号可以有自定义外边框，它是由lineSymbol定义的。</p>
+</blockquote>
+</li>
+<li><p>2 用法 :</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sls = <span class="keyword">new</span> SimpleLineSymbol(</span><br><span class="line">          SimpleLineSymbol.STYLE_DASH,</span><br><span class="line">          <span class="keyword">new</span> Color([<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>]),</span><br><span class="line">          <span class="number">3</span></span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 官网API : <a href="https://developers.arcgis.com/javascript/3/jsapi/simplelinesymbol-amd.html" target="_blank" rel="noopener">这里</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3 图形(Graphic) :</p>
+<ul>
+<li>1 描述:<blockquote>
+<p>A Graphic can contain geometry, a symbol, attributes, or an infoTemplate. A Graphic is displayed in the GraphicsLayer. The GraphicsLayer allows you to listen for events on Graphics.</p>
+<p>图形可以包含几何图形、符号、属性或信息模板。图形显示在图形层中。图层允许您监听图形上的事件。</p>
+</blockquote>
+</li>
+<li><p>2 用法 :</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pt = <span class="keyword">new</span> Point(xloc,yloc,map.spatialReference);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sms = <span class="keyword">new</span> SimpleMarkerSymbol().setStyle(</span><br><span class="line">	SimpleMarkerSymbol.STYLE_SQUARE).setColor(</span><br><span class="line">		<span class="keyword">new</span> Color([<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>])</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> attr = &#123;</span><br><span class="line">	<span class="string">"Xcoord"</span>:evt.mapPoint.x,</span><br><span class="line">	<span class="string">"Ycoord"</span>:evt.mapPoint.y,</span><br><span class="line">	<span class="string">"Plant"</span>:<span class="string">"Mesa Mint"</span></span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> infoTemplate = <span class="keyword">new</span> InfoTemplate(</span><br><span class="line">	<span class="string">"Vernal Pool Locations"</span>,</span><br><span class="line">	<span class="string">"Latitude: $&#123;Ycoord&#125; &lt;br/&gt;"</span> +</span><br><span class="line">	<span class="string">"Longitude: $&#123;Xcoord&#125; &lt;br/&gt;"</span> +</span><br><span class="line">	<span class="string">"Plant Name:$&#123;Plant&#125;"</span></span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> graphic = <span class="keyword">new</span> Graphic(pt,sms,attr,infoTemplate);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 官网API:<a href="https://developers.arcgis.com/javascript/3/jsapi/graphic-amd.html" target="_blank" rel="noopener">这里</a></p>
+</li>
+</ul>
+</li>
+<li><p>4 图层(GraphicsLayer):</p>
+<ul>
+<li>1 描述 :  <blockquote>
+<p>A layer that contains one or more Graphic features. Each map contains a Graphics Layer by default, accessible using the Map.graphics property. You can create your own graphics layers and add them to the map. Graphics layers can be reordered within the group of graphics layers. However, the graphics layer in Map.graphics is always on top. Also, all graphics layers are always on top of TiledMapServiceLayers and DynamicMapServiceLayers.</p>
+<p>一个包含一个或多个图形的层。每个地图默认都包含一个图层，使用 <code>Map.graphics</code>访问图形属性。您可以创建自己的图层并将它们添加到地图中。图层可以在图层中重新排序。然而，在地图上的图层总是在顶部。此外，所有的图层总是在 <code>TiledMapServiceLayers</code>和 <code>DynamicMapServiceLayers</code> 之上。</p>
+</blockquote>
+</li>
+<li><p>2 用法:</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> graphicsLayer = <span class="keyword">new</span> GraphicsLayer();</span><br><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>(....);</span><br><span class="line">map.addLayer(graphicsLayer)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 官网API : <a href="https://developers.arcgis.com/javascript/3/jsapi/graphicslayer-amd.html" target="_blank" rel="noopener">这里</a></p>
+</li>
+</ul>
+</li>
+<li>以上就是各种基本模块的使用,都很相似</li>
+</ul>
+<h3 id="2-事件处理"><a href="#2-事件处理" class="headerlink" title="2. 事件处理 :"></a>2. 事件处理 :</h3><blockquote>
+<p>arcgis API for js 是一个事件驱动的API。当您与一个JavaScript应用程序交互时发生事件。加载页面、单击鼠标、执行任务以及许多其他操作都会触发事件。您可以通过侦听事件和编写响应它们的代码来使您的应用程序具有交互性，这就是所谓的“处理”事件。</p>
+<p>为了处理一个事件，您需要添加监听它的代码。为一个事件注册一个监听器会使您的应用程序处于等待状态，当特定事件发生时它需要做一些事情。具体来说，它将调用handler函数来响应事件。</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  map = <span class="keyword">new</span> <span class="built_in">Map</span>(<span class="string">"mapDiv"</span>);</span><br><span class="line">map.on(<span class="string">"click"</span>, myClickHandler);</span><br><span class="line">map.addLayer(&#123;...&#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myClickHandler</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> extent = evt.extent;</span><br><span class="line">      <span class="keyword">let</span> zoomed = evt.levelChange;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  map实例可以绑定事件,图性也可以绑定事件比如,图形的<code>mouse-move</code>事件.</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.graphicsLayer.clickPoint.on (<span class="string">'mouse-move'</span>, <span class="keyword">this</span>.moueseMove);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-关于esri-loader"><a href="#3-关于esri-loader" class="headerlink" title="3 关于esri-loader"></a>3 关于esri-loader</h3><blockquote>
+<p>A tiny library to help load ArcGIS API for JavaScript modules in non-Dojo applications</p>
+</blockquote>
+<ul>
+<li><p>1 <a href="https://github.com/Esri/esri-loader" target="_blank" rel="noopener">github 地址</a>;</p>
+</li>
+<li><p>2 方法明细 :</p>
+</li>
+<li><p>1 安装:</p>
+<p><code>npm install --save esri-loader</code>或者<code>yarn add esri-loader</code></p>
+</li>
+<li><p>2 使用: 在相应的模块中引入即可:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> esriLoader <span class="keyword">from</span> <span class="string">'esri-loader'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3 加载样式 :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据不同的情况,可以选择不同的 url 来加载css;</span></span><br><span class="line">esriLoader.loadCss(<span class="string">'https://js.arcgis.com/4.7/esri/css/main.css'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4 加载modules:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  url: <span class="string">'https://js.arcgis.com/3.24/'</span>,</span><br><span class="line">  dojoConfig:&#123;</span><br><span class="line">    <span class="comment">// 如果API和项目是在同一个tomcat 下,</span></span><br><span class="line">    <span class="comment">// 将通过同步的方式加载API,控制台会报警告,</span></span><br><span class="line">    <span class="comment">// 这里设置为呃异步加载即可</span></span><br><span class="line">    <span class="keyword">async</span>:<span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果不传入options;将默认从官网加载最新版本,</span></span><br><span class="line">esriLoader.loadModules([<span class="string">'esri/map'</span>], options)</span><br><span class="line">.then(<span class="function">(<span class="params">[<span class="built_in">Map</span>]</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>(<span class="string">'mapNode'</span>, &#123;</span><br><span class="line">    center: [<span class="number">-118</span>, <span class="number">34.5</span>],</span><br><span class="line">    zoom: <span class="number">8</span>,</span><br><span class="line">    basemap: <span class="string">'dark-gray'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 处理加载模块期间的错误;</span></span><br><span class="line">  <span class="built_in">console</span>.error(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            
+        </div>
+        
+    </div>
+    
+        
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/arcgjs API for js 3.24/">Arcgjs API for Js 3.24 </a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 WestLonely 的个人博客">WestLonely</a></p>
+        <p><span>发布时间:</span>2018年07月04日 - 00时00分</p>
+        <p><span>最后更新:</span>2020年01月01日 - 21时24分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/arcgjs API for js 3.24/" title="Arcgjs API for Js 3.24 ">https://biubu.cn/arcgjs API for js 3.24/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://biubu.cn/arcgjs API for js 3.24/　　作者: WestLonely" title=""></span>
+        </p>
+        <!--<p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>-->
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/vue封装axios/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Vue封装axios
+        
+      </div>
+    </a>
+  
+  
+    <a href="/arcgis api tomcat/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Arcgis for Js 本地部署API</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+    
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-核心概念"><span class="toc-number">1.</span> <span class="toc-text">1. 核心概念 :</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事件处理"><span class="toc-number">2.</span> <span class="toc-text">2. 事件处理 :</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-关于esri-loader"><span class="toc-number">3.</span> <span class="toc-text">3 关于esri-loader</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+        <section id="comments">
+    <script>
+    $(document).ready(function () {
+        let valine = new Valine();
+        valine.init({
+            el: '#comments',
+            appId: 'iCDMA5OvawWMUvFQWMuHHvzv-gzGzoHsz',
+            appKey: 'OB60YUMAVawPGJUMiiJeQebR',
+            notify: 'true',
+            verify: 'true',
+            avatar: 'identicon',
+            placeholder: '快来添加你的评论吧',
+            pageSize:'10,',
+            recordIP: true
+        });
+    });
+    </script>
+</section>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/vue封装axios/" title="上一篇: Vue封装axios">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/arcgis api tomcat/" title="下一篇: Arcgis for Js 本地部署API">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020你好/">2020你好啊</a></li><li class="post-list-item"><a class="post-list-link" href="/2019为啥不写博客了/">2019年我为啥不写博客了</a></li><li class="post-list-item"><a class="post-list-link" href="/2018总结/">2018年总结</a></li><li class="post-list-item"><a class="post-list-link" href="/webstorm一键部署项目/">Webstorm 一键部署项目</a></li><li class="post-list-item"><a class="post-list-link" href="/vue style scoped 属性漫谈/">Vue Style Scoped 属性漫谈</a></li><li class="post-list-item"><a class="post-list-link" href="/Deepin 安装gitlab/">Deepin 安装Gitlab</a></li><li class="post-list-item"><a class="post-list-link" href="/arcgis vue 点聚合/">Arcgis Vue 点聚合 </a></li><li class="post-list-item"><a class="post-list-link" href="/Deepin 无法调整深度终端透明度和无法开启窗口特效的问题/">Deepin 无法调整深度终端透明度和无法开启窗口特效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/Vue filters 用法举例/">Vue Filters 用法举例</a></li><li class="post-list-item"><a class="post-list-link" href="/Windows 10 Ubuntu 子系统安装myslq/">Windows 10 Ubuntu 子系统安装Myslq</a></li><li class="post-list-item"><a class="post-list-link" href="/echart中图表自适应/">Echarts中的图表自适应</a></li><li class="post-list-item"><a class="post-list-link" href="/vue 父组件向子组件传值的两种方式/">Vue 父组件向子组件传值的两种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/arcgis 加载天地图/">Arcgis API for Js 加载天地图</a></li><li class="post-list-item"><a class="post-list-link" href="/vue封装axios/">Vue封装axios</a></li><li class="post-list-item"><a class="post-list-link" href="/arcgjs API for js 3.24/">Arcgjs API for Js 3.24 </a></li><li class="post-list-item"><a class="post-list-link" href="/arcgis api tomcat/">Arcgis for Js 本地部署API</a></li><li class="post-list-item"><a class="post-list-link" href="/arcgis/">arcgis模块化开发之vue.js </a></li><li class="post-list-item"><a class="post-list-link" href="/Promise 与异步编程/">Promise 与异步编程:</a></li><li class="post-list-item"><a class="post-list-link" href="/从零开始用-webpack-搭建环境/">从零开始用-Webpack-搭建环境 </a></li><li class="post-list-item"><a class="post-list-link" href="/webstorm-通过ssh连接服务器/">Webstorm-通过Ssh连接服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/基于jqurey事件委托,实现表单验证/">基于Jqurey事件委托,实现表单验证 </a></li><li class="post-list-item"><a class="post-list-link" href="/webstorm-设置-setting-Repository/">Webstorm 设置 Setting-Repository </a></li><li class="post-list-item"><a class="post-list-link" href="/ES6-解构赋值/">ES6-解构赋值</a></li><li class="post-list-item"><a class="post-list-link" href="/03 Javascript 观察者模式 -- 发布订阅模式/">观察者模式 -- 发布订阅模式 </a></li><li class="post-list-item"><a class="post-list-link" href="/在VUE中使用bookreader-插件/">在VUE中使用bookreader-插件 </a></li><li class="post-list-item"><a class="post-list-link" href="/02 Javascript Singleton(单例)模式/">单例模式 </a></li><li class="post-list-item"><a class="post-list-link" href="/01 Javascript 设计模式 -- Module(模块)模式/">模块模式 </a></li><li class="post-list-item"><a class="post-list-link" href="/04 Javascript Factory (工厂)模式/">工厂模式 </a></li><li class="post-list-item"><a class="post-list-link" href="/在-vue-中使用-vieiwer-图片预览插件/">在Vue中使用 Vieiwer图片预览插件 </a></li><li class="post-list-item"><a class="post-list-link" href="/python lambda函数/">Lambda 函数</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+    
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 WestLonely
+            </div>
+            <div class="footer-right">
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">滇ICP备18010285号</a>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">极客到访数:
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量:
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(http://cdn.biubu.cn/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() *
+                backgroundnum));
+            // var backgroundimg = "url(http://cdn.biubu.cn/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-122697015-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e09f51f0a975df2e05586dc0d518e279";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

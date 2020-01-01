@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="lYWuD8ifei">
+    
+    
+    
+    
+    <title>
+        
+        WestLonely</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="https://biubu.cn">
+<meta name="keywords" content="前端 github gitee JavaScript Vue echarts arcgis API for js">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WestLonely">
+<meta property="og:url" content="https://biubu.cn/index.html">
+<meta property="og:site_name" content="WestLonely">
+<meta property="og:description" content="https://biubu.cn">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WestLonely">
+<meta name="twitter:description" content="https://biubu.cn">
+    
+    
+        <link rel="icon" href="/img/favicon.png">
+    
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--    <link href="https://cdn.bootcss.com/font-awesome/5.8.2/css/all.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css">
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+        
+            <meta name="baidu-site-verification" content="pS3tPWt5YJk0PRzd">
+        
+        
+            <meta name="google-site-verification" content="mWtJLcSiWhyaykmTl9YU32nNy-Yc1_SehlizPGwKoNw">
+        
+    
+    
+        <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+    
+    <!-- 加载特效 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <link href="https://cdn.bootcss.com/pace/0.5.1/themes/pace-theme-flash.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/valine.css">
+    <script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if(curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+    };
+    </script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="http://cdn.biubu.cn/avatar1.gif" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">WestLonely</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">前端二狗子的博客</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/categories/前端/IDE/">IDE</a></li>
+                        
+                            <li><a href="/categories/前端/JavaScript/">JavaScript</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/about/">关于作者</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/biubu" title="github">github</a>
+                            
+                                <a class="fl gitee" target="_blank" href="https://gitee.com/biubu" title="gitee">gitee</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2018总结/" style="font-size: 10px;">2018总结</a> <a href="/tags/2019/" style="font-size: 10px;">2019</a> <a href="/tags/2020/" style="font-size: 10px;">2020</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/IDE/" style="font-size: 11.67px;">IDE</a> <a href="/tags/JavaScript/" style="font-size: 18.33px;">JavaScript</a> <a href="/tags/JavaScript-jquery/" style="font-size: 10px;">JavaScript - jquery</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/arcgis/" style="font-size: 15px;">arcgis</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/前端开发/" style="font-size: 15px;">前端开发</a> <a href="/tags/后端/" style="font-size: 13.33px;">后端</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/杂文/" style="font-size: 11.67px;">杂文</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">一个前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">WestLonely</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="http://cdn.biubu.cn/avatar1.gif" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">WestLonely</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">前端二狗子的博客</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/categories/前端/IDE/">IDE</a></li>
+                
+                    <li><a href="/categories/前端/JavaScript/">JavaScript</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/about/">关于作者</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/biubu" title="github">github</a>
+                    
+                        <a class="gitee" target="_blank" href="https://gitee.com/biubu" title="gitee">gitee</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-2020你好" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/2020你好/" class="article-date">
+      <time datetime="2020-01-01T14:00:00.000Z" itemprop="datePublished">2020-01-01</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020你好/">2020你好啊</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>不困于情，得到有得到的幸福；不乏于行，失去有失去的快乐。幸福的未来要有远方的期待。有所期待，有所谓，探索未知的好奇心一直要保持着，毕竟每一个探索的过程，会有不同的新奇。</p>
+<p>如果心中有光，在阳光洒满大地的时候会感觉温暖，如果心中阴暗，透过窗帘的一丝明亮，都觉得刺眼。</p>
+</blockquote>
+                
+            
+        </div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/杂文/">杂文</a><a class="article-category-link" href="/categories/杂文/2020/">2020</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2020/">2020</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/2020你好/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2019为啥不写博客了" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/2019为啥不写博客了/" class="article-date">
+      <time datetime="2019-05-17T14:00:00.000Z" itemprop="datePublished">2019-05-17</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019为啥不写博客了/">2019年我为啥不写博客了</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>没为啥,公司不允许。</p>
+</blockquote>
+                
+            
+        </div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/杂文/">杂文</a><a class="article-category-link" href="/categories/杂文/2019/">2019</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2019/">2019</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/2019为啥不写博客了/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2018总结" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/2018总结/" class="article-date">
+      <time datetime="2018-12-30T14:30:00.000Z" itemprop="datePublished">2018-12-30</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018总结/">2018年总结</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>这篇文章是写给自己的,盘点一下自己的这一年。</p>
+</blockquote>
+                
+            
+        </div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/杂文/">杂文</a><a class="article-category-link" href="/categories/杂文/2018总结/">2018总结</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2018总结/">2018总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/2018总结/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-webstorm一键部署项目" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/webstorm一键部署项目/" class="article-date">
+      <time datetime="2018-12-25T16:00:00.000Z" itemprop="datePublished">2018-12-26</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/webstorm一键部署项目/">Webstorm 一键部署项目</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>有一位伟人曾说:<code>人类进步的主要原因就是因为人类在想方设法的偷懒。</code>我对此深表赞同，如果一件事重复了好多遍还想一直重复下去，这与我来说是恐怖的。所以防止让自己陷入这种怪圈，我得想办法让自己心安理得的偷懒。这就是本文诞生的原因。<br>
+                
+            
+        </p></blockquote></div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/IDE/">IDE</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/webstorm一键部署项目/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-vue style scoped 属性漫谈" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/vue style scoped 属性漫谈/" class="article-date">
+      <time datetime="2018-11-05T16:00:00.000Z" itemprop="datePublished">2018-11-06</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/vue style scoped 属性漫谈/">Vue Style Scoped 属性漫谈</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <h3 id="初始化项目："><a href="#初始化项目：" class="headerlink" title="初始化项目："></a>初始化项目：</h3><blockquote>
+<p>用@vue/cli 生成的项目,完成之后创建<code>Hello.vue</code> 组件作为<code>HelloWorld.vue</code>的子组件其中. <code>src</code> 目录如下:　</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── App.vue</span><br><span class="line">├── assets</span><br><span class="line">│   └── logo.png</span><br><span class="line">├── components</span><br><span class="line">│   ├── Hello.vue</span><br><span class="line">│   └── HelloWorld.vue</span><br><span class="line">└── main.js</span><br></pre></td></tr></table></figure>
+                
+            
+        </div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a><a class="article-category-link" href="/categories/前端/JavaScript/vue/">vue</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/vue style scoped 属性漫谈/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Deepin 安装gitlab" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/Deepin 安装gitlab/" class="article-date">
+      <time datetime="2018-11-04T01:28:00.000Z" itemprop="datePublished">2018-11-04</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Deepin 安装gitlab/">Deepin 安装Gitlab</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <h3 id="gitlab-安装："><a href="#gitlab-安装：" class="headerlink" title="gitlab 安装："></a>gitlab 安装：</h3><blockquote>
+<p>官方的源安装很慢，建议选择清华大学的源。<a href="https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/" target="_blank" rel="noopener">链接</a>，说明教程都有，我选择的是 debian8.<br>
+                
+            
+        </p></blockquote></div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a><a class="article-category-link" href="/categories/后端/linux/">linux</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/Deepin 安装gitlab/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-arcgis vue 点聚合" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/arcgis vue 点聚合/" class="article-date">
+      <time datetime="2018-10-16T01:00:00.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/arcgis vue 点聚合/">Arcgis Vue 点聚合 </a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>之前用arcgis加载过天地图,点都是一个一个画出来了,由于点不是很多,所以没有使用点聚合功能,这次需要的点也不太多,总共也就两百个左右,为了好看,说要做个点聚合,做就做,谁怕谁?<br>
+                
+            
+        </p></blockquote></div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a><a class="article-category-link" href="/categories/前端/JavaScript/前端开发/">前端开发</a><a class="article-category-link" href="/categories/前端/JavaScript/前端开发/arcgis/">arcgis</a><a class="article-category-link" href="/categories/前端/JavaScript/前端开发/arcgis/vue/">vue</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arcgis/">arcgis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/arcgis vue 点聚合/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Deepin 无法调整深度终端透明度和无法开启窗口特效的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/Deepin 无法调整深度终端透明度和无法开启窗口特效的问题/" class="article-date">
+      <time datetime="2018-09-28T01:28:00.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Deepin 无法调整深度终端透明度和无法开启窗口特效的问题/">Deepin 无法调整深度终端透明度和无法开启窗口特效的问题</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>最近在折腾linux,从Deepin到Ubuntu 都试了个遍,也踩了不少坑.</p>
+</blockquote>
+                
+            
+        </div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a><a class="article-category-link" href="/categories/后端/linux/">linux</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/Deepin 无法调整深度终端透明度和无法开启窗口特效的问题/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Vue filters 用法举例" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/Vue filters 用法举例/" class="article-date">
+      <time datetime="2018-09-13T16:00:00.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Vue filters 用法举例/">Vue Filters 用法举例</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <blockquote>
+<p>vue 用,有时候直接使用后台传过来的数据不能满足我们的要求,比如分别用 1,2,3,4代表不同的类型,我们需要对这些数据进行翻译,翻译成我们想要的结果,这种可以用vue的filters 来实现;</p>
+<p>vue 的 filters 还有一种是全局配置的,这里不做介绍;<br>
+                
+            
+        </p></blockquote></div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/JavaScript/">JavaScript</a><a class="article-category-link" href="/categories/前端/JavaScript/vue/">vue</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/Vue filters 用法举例/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Windows 10 Ubuntu 子系统安装myslq" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <div class="article-meta">
+            <a href="/Windows 10 Ubuntu 子系统安装myslq/" class="article-date">
+      <time datetime="2018-09-02T07:53:00.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+
+        </div>
+    
+    <div class="article-inner">
+        
+            <input type="hidden" class="isFancy">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Windows 10 Ubuntu 子系统安装myslq/">Windows 10 Ubuntu 子系统安装Myslq</a>
+    </h1>
+  
+
+
+            </header>
+            
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                
+                    <h3 id="1-安装前"><a href="#1-安装前" class="headerlink" title="1.安装前"></a>1.安装前</h3><p>首先执行下面三条命令,分别安装<code>mysql-server</code> <code>mysql-client</code> 和 <code>libmysqlclient-dev</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt install mysql-client</span><br><span class="line">sudo apt install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
+                
+            
+        </div>
+        
+        <div class="article-info article-info-index">
+            
+            
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a><a class="article-category-link" href="/categories/后端/linux/">linux</a>
+    </div>
+
+
+            
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
+    </div>
+
+            
+                <p class="article-more-link">
+                    <a href="/Windows 10 Ubuntu 子系统安装myslq/#more">查看更多 >></a>
+                </p>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 WestLonely
+            </div>
+            <div class="footer-right">
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">滇ICP备18010285号</a>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">极客到访数:
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量:
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(http://cdn.biubu.cn/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() *
+                backgroundnum));
+            // var backgroundimg = "url(http://cdn.biubu.cn/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-122697015-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e09f51f0a975df2e05586dc0d518e279";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

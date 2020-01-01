@@ -1,0 +1,103 @@
+#comments {
+    padding: 0 36px;
+}
+
+::-moz-placeholder {
+    color: #4094c7;
+}
+
+::-webkit-input-placeholder {
+    color: #4094c7;
+}
+
+:-ms-input-placeholder {
+    color: #4094c7;
+}
+
+.v .vnick {
+    color: #d5d5d5;
+    font-size: 1rem;
+}
+
+.v .vwrap .vheader .vinput {
+    border-bottom: 2px solid #4094c7;
+    width: 50%;
+}
+
+.v .vmail {
+    color: #d5d5d5;
+    font-size: 1rem;
+}
+
+.vlink {
+    color: #d5d5d5;
+    font-size: 1rem;
+    display: none;
+}
+
+.v .veditor {
+    color: #d5d5d5;
+    font-size: 1rem;
+    border: 1px dashed #4094c7;
+}
+
+.v .vlist .vcard .vcontent {
+    color: #d5d5d5;
+}
+
+.v .vctrl {
+    color: #4094c7;
+}
+
+.v .vctrl span {
+    color: #4094c7;
+}
+
+.v * {
+    color: #d5d5d5;
+    font-size: 1rem;
+}
+
+.vcode {
+    color: #000;
+}
+
+.info {
+    display: none;
+}
+
+.v .vlist .vcard .vcontent {
+    color: #4094c7;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #fff;
+    background: #4094c7;
+}
+
+.v .vwrap {
+    border: none;
+    box-shadow: 4px 4px 18px rgba(0, 0, 0, .46);
+}
+
+.v .vempty {
+    color: #4094c7;
+}
+
+.v .vbtn {
+    color: #fff;
+    background: #4094c7;
+    border: 1px solid #4094c7;
+}
+
+.v .vlist .vcard .vh {
+    border-bottom: 1px dashed #4094c7;
+}
+
+.v .at{
+    color: #4094c7;
+}
+
+.v .vlist .vcard .vquote{
+    border-left: 1px dashed #4094c7;
+}
