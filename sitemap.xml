@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://biubu.cn/about/index.html</loc>
+    
+    <lastmod>2020-07-17T03:43:07.904Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://biubu.cn/2020%E4%BD%A0%E5%A5%BD/</loc>
     
     <lastmod>2020-01-01T13:36:27.410Z</lastmod>
@@ -37,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://biubu.cn/about/index.html</loc>
-    
-    <lastmod>2020-01-01T13:24:28.386Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://biubu.cn/vue%20%E7%88%B6%E7%BB%84%E4%BB%B6%E5%90%91%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
     
     <lastmod>2020-01-01T13:24:28.385Z</lastmod>
@@ -51,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://biubu.cn/webstorm-%E8%AE%BE%E7%BD%AE-setting-Repository/</loc>
+    <loc>https://biubu.cn/vue%E5%B0%81%E8%A3%85axios/</loc>
     
     <lastmod>2020-01-01T13:24:28.385Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://biubu.cn/vue%E5%B0%81%E8%A3%85axios/</loc>
+    <loc>https://biubu.cn/webstorm-%E8%AE%BE%E7%BD%AE-setting-Repository/</loc>
     
     <lastmod>2020-01-01T13:24:28.385Z</lastmod>
     
@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://biubu.cn/Vue%20filters%20%E7%94%A8%E6%B3%95%E4%B8%BE%E4%BE%8B/</loc>
+    <loc>https://biubu.cn/Windows%2010%20Ubuntu%20%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85myslq/</loc>
     
     <lastmod>2020-01-01T13:24:28.381Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://biubu.cn/Windows%2010%20Ubuntu%20%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85myslq/</loc>
+    <loc>https://biubu.cn/Vue%20filters%20%E7%94%A8%E6%B3%95%E4%B8%BE%E4%BE%8B/</loc>
     
     <lastmod>2020-01-01T13:24:28.381Z</lastmod>
     
